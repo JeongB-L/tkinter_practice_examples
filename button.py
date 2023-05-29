@@ -24,5 +24,6 @@ button = tkinter.Button(window,text=text_on_button, overrelief="solid", width=15
 button['command'] = countUp
 
 button.pack()
+# tmep
 
 window.mainloop()
