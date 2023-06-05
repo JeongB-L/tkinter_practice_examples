@@ -5,14 +5,13 @@ window.title("YUN DAE HEE")
 window.geometry("640x400+100+100")
 window.resizable(True, True)
 
-def pressme(*args):
+def pressme(event):
     print('hi')
-b = tkinter.Button(window, text='press me',
-                   command=pressme)
-b.pack()
+    l.config(text=event.char)
+    
+l = tkinter.Label(window, text='here')
+l.pack()
 
-window.bind('1', pressme)
-window.bind('2', pressme)
-window.bind('3', pressme)
+window.bind('<Key>', pressme)
 
 window.mainloop()
