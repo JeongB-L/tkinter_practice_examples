@@ -107,13 +107,15 @@ class main_gui(object):
     root.bind('0', kf.zero_is_pressed)
     root.bind('c', kf.C_is_pressed)
     
-    # task: as numerics are typed, make them visible on GUI
+    # as numerics are typed, make them visible on GUI
         
     answer_font = tkf.Font(family='Times', size=30)
     settings.answer = tk.Label(root, font=answer_font, width=15, height=8, bd=3,
                       relief='solid', text='hi')
     
     settings.answer.grid(row=4, column=3)
+    
+    # process the equation whenever = is clicked
 
 
 if __name__ == "__main__":
