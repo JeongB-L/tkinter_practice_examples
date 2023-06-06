@@ -7,7 +7,7 @@ import settings
 
 class main_gui(object):
     settings.init()
-    
+
     root = tk.Tk()
     root.title('calculator')
     root.geometry("452x500+790+270")
@@ -72,23 +72,45 @@ class main_gui(object):
                         width=5, height=3, bd=2,
                         command=kf.C_is_pressed)
     b_num_C.grid(row=1, column=1)
-    
+
     # % mod
     b_num_mod = tk.Button(left_frame, text='mod',
                           width=5, height=3, bd=2,
                           command=kf.mod_is_pressed)
     b_num_mod.grid(row=2, column=1)
     # / division
-    b_num_div = tk.Button(left_frame ,text='div',
+    b_num_div = tk.Button(left_frame, text='div',
                           width=5, height=3, bd=2,
                           command=kf.division_is_pressed)
     b_num_div.grid(row=3, column=1)
     # x multiplication
+    b_num_mul = tk.Button(left_frame, text='X',
+                          width=5, height=3, bd=2,
+                          command=kf.multiplication_is_pressed)
+    b_num_mul.grid(row=4, column=1)
     # + addition
+    b_num_add = tk.Button(left_frame, text='+',
+                          width=5, height=3, bd=2,
+                          command=kf.addition_is_pressed)
+    b_num_add.grid(row=5, column=1)
+    
     # - subtraction
+    b_num_sub = tk.Button(left_frame, text='-',
+                          width=5, height=3, bd=2,
+                          command=kf.subtraction_is_pressed)
+    b_num_sub.grid(row=6, column=1)
     # . point
+    b_num_point = tk.Button(left_frame, text='P',
+                            width=5, height=3, bd=2,
+                            command=kf.point_is_pressed)
+    b_num_point.grid(row=7, column=1)
     # del delete
+    b_delete  = tk.Button(left_frame, text='del',
+                          width=5, height=3, bd=2,
+                          command=kf.delete_is_pressed)
+    b_delete.grid(row=8, column=1)
     # ( left bracket
+    
     # ) right bracket
     # = equal sign
 
@@ -106,15 +128,25 @@ class main_gui(object):
     root.bind('9', kf.nine_is_pressed)
     root.bind('0', kf.zero_is_pressed)
     root.bind('c', kf.C_is_pressed)
-    
+    root.bind('%', kf.mod_is_pressed)
+    root.bind('/', kf.division_is_pressed)
+    root.bind('x', kf.multiplication_is_pressed)
+    root.bind('+', kf.addition_is_pressed)
+    root.bind('-', kf.subtraction_is_pressed)
+    root.bind('.', kf.point_is_pressed)
+    root.bind('d', kf.delete_is_pressed)
+    root.bind('(', kf.left_bracket_is_pressed)
+    root.bind(')', kf.right_bracket_is_pressed)
+    root.bind('<BackSpace>', kf.delete_is_pressed)
+
     # as numerics are typed, make them visible on GUI
-        
+
     answer_font = tkf.Font(family='Times', size=30)
     settings.answer = tk.Label(root, font=answer_font, width=15, height=8, bd=3,
-                      relief='solid', text='hi')
-    
+                               relief='solid', text='hi')
+
     settings.answer.grid(row=4, column=3)
-    
+
     # process the equation whenever = is clicked
 
 
