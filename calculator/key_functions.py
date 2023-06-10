@@ -18,7 +18,7 @@ def refresh(func):
             # and =, C, backspace are the only ones
             # that can make it move out
             del st.entry[32]
-        if len(st.entry) % 11 == 0:
+        if len(st.entry) % 10 == 0:
             st.entry.append('\n')
         crr = ''.join(str(e) for e in st.entry)
         st.answer.config(text=crr[1: len(crr)])
@@ -121,15 +121,56 @@ def delete_is_pressed(*args):
 
 @refresh
 def left_bracket_is_pressed(*args):
-    st.entry.append('(')
+    #st.entry.append('(')
+    pass
 
 
 @refresh
 def right_bracket_is_pressed(*args):
-    st.entry.append(')')
-
+   #st.entry.append(')')
+    pass
 
 @refresh
 def equal_is_pressed(*args):
     # return the result of the calculation
-    pass
+    st.entry.append('=')
+    print(st.entry)
+    # make sure it is int until next operator
+    op_index = 1
+    while op_index < len(st.entry):
+        try:
+            int(st.entry[op_index])
+        except ValueError:
+            break
+        op_index += 1 
+    
+    op = st.entry[op_index]
+
+    f = []
+    for i in range(1, op_index):
+        f.append(str(st.entry[i]))
+    print(f)
+    f = int(''.join(f))
+    
+    s = []
+    for i in range(op_index + 1, len(st.entry) - 1):
+        s.append(str(st.entry[i]))
+    s = int(''.join(s))
+    
+    print(f'firstly we got {f} {op} {s}')
+
+    C_is_pressed()
+    if op == ' + ':
+        st.entry.append(f + s)
+    elif op == ' % ':
+        st.entry.append(f % s)
+    elif op == ' / ':
+        st.entry.append(f / s)
+    elif op == ' X ':
+        st.entry.append(f * s)
+    elif op == ' - ':
+        st.entry.append(f - s)
+        # currently points are not processable
+        
+    return None
+    
